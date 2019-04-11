@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}TRUST RESEARCHES{% endblock %}</title>
+      {% block stylesheets %}
+          <link rel="stylesheet" href="/vendor/css/grid.css">
+          <link rel="stylesheet" type="text/css" href="/vendor/css/main.css">
+          <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        {% endblock %}
+    </head>
+    <body>
+      <div id="header_content">
+        <div id="header" class="header3">
+          <div id="content">
+            <a class="header_menu" href="{{ path('shop3') }}">M.</a>
+            <a href="{{ path('categories3', {'slug': 'hard-drive'}) }}">Hard drive</a>
+            <a href="{{ path('categories3', {'slug': 'adaptators'}) }}">Adaptators</a>
+            <a href="{{ path('categories3', {'slug': 'smart-speaker'}) }}">Smart speaker</a>
+            <span id="cart_button1" href="#">
+              <i class="fas fa-shopping-cart">
+                {% if countArticlesCart is defined %}
+                  <span class="countArticles">{{ countArticlesCart }}</span>
+                {% else %}
+                  <span class="countArticles">0</span>
+                {% endif %}
+              </i>
+            </span>
+          </div>
+        </div>
+      </div>
+        {% block body %}{% endblock %}
+        <footer>
+          <div class="footer-bottom">
+              <div class="container">
+                  <p class="pull-left">Copyright © M. Company 2019. All right reserved.</p>
+                  <div class="pull-right">
+                      <ul class="nav nav-pills payments">
+                    	  <i class="fab fa-cc-mastercard"></i>
+                        <i class="fab fa-cc-jcb"></i>
+                        <i class="fab fa-cc-amex"></i>
+                        <i class="fab fa-cc-paypal"></i>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+          <!--/.footer-bottom-->
+        </footer>
+        {% block javascripts %}
+          <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+          <script src="/build/js/jquery.skippr.js" charset="utf-8"></script>
+          <script src="{{ asset('build/js/app.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,384 @@
+{# templates/home.html.twig #}
+{% extends 'base_payement2.html.twig' %}
+  {% block body %}
+  <div class="no_display" id="greyBack"></div>
+  <div class="no_display" id="congrat">
+    <div id="text">
+      <h2>Thanks you!</h2>
+      <p>Your order is made.</br>You will receive a confirmation email.</p>
+    </div>
+    <a href="{{ path('cartShop2') }}">OK</a>
+  </div>
+  <!-- Info content div -->
+  <div id="headerInfo2">
+    <span id="title_footerCochin">M.</span>
+    <i class="fas fa-lock"><span class="footerInfo">Secure environment</span></i>
+  </div>
+
+  <div class="container car_shop2_margin">
+    <div class="row">
+      <div id="payement_block" class="col-md-7 col-sm-5">
+        <!-- creditCard -->
+        <div class="container_form form_shop2">
+          <span class="bubbleNumb">1</span>
+          <div class="card-wrapper disapear"></div>
+          <span class="title_section_form">Payement</span>
+          <!-- <a id="modify_creditC" class="modify_btn" href="#" class="hide">Modify</a> -->
+          <form id="creditCard">
+            <span class="section">Credit card
+              <div class="form-group first_form" id="credit_cards">
+                <img src="/vendor/images/visa.png" id="visa">
+                <img src="/vendor/images/master.png" id="mastercard">
+                <img src="/vendor/images/amex.png" id="amex">
+              </div>
+            </span>
+            <hr>
+            <div class="form-group owner">
+                <label for="owner">Owner</label>
+                <input placeholder="Full name" type="text" class="form-control" id="owner" name="name">
+                <i id="iconOwner" class="fas fa-check-circle"></i>
+            </div>
+            <div class="form-group" id="card-number-field">
+                <label for="cardNumber">Card Number</label>
+                <input placeholder="•••• •••• •••• ••••" type="tel" class="form-control" name="number" id="cardNumber">
+                <i id="iconCb" class="fas fa-check-circle"></i>
+            </div>
+            <div class="form-group" id="expiration-date">
+                <label>Expiration Date</label>
+                <input placeholder="MM/YY" type="tel" class="form-control" id="date" name="expiry">
+                <i id="iconDate" class="fas fa-check-circle"></i>
+            </div>
+            <div class="form-group" id="cvv-field">
+                <label for="cvv">CVV</label>
+                <input placeholder="•••" type="number" name="cvc" class="form-control" id="cvv">
+                <i id="iconCvv" class="fas fa-check-circle"></i>
+            </div>
+            <div class="form-group" id="pay-now">
+                <a href="#" id="confirm-card2">Confirm</a>
+            </div>
+          </form>
+        </div>
+        <!-- shippingInfo -->
+        <div class="container_form form_shop2 form2 opacity">
+          <span class="bubbleNumb">2</span>
+          <span class="title_section_form">Shipping</span>
+          <!-- <a id="modify_shipping" class="modify_btn" href="#" class="hide">Modify</a> -->
+          <form id="shippingInfo" class="closed">
+            <div class="form-group">
+                <label for="owner">Name</label>
+                <input type="text" class="form-control" id="name">
+                <i id="iconOwner" class="fas fa-check-circle"></i>
+            </div>
+            <div class="form-group street" id="street_input">
+                <label for="street">Street, road</label>
+                <input type="text" class="form-control" id="street">
+                <i id="iconStreet" class="fas fa-check-circle"></i>
+            </div>
+            <div class="form-group apt" id="apt_input">
+                <label for="apt">Apt.</label>
+                <input type="text" class="form-control" id="apt">
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="Country">
+                    <option value="xx">Choose your country</option>
+                    <option value="01">Japan</option>
+                    <option value="02">Taiwan </option>
+                    <option value="03">France</option>
+                    <option value="04">United Kingdon</option>
+                    <option value="05">United State of America</option>
+                    <option value="06">Jamaica</option>
+                    <option value="07">China</option>
+                    <option value="08">South Korea</option>
+                    <option value="09">Australia</option>
+                    <option value="10">Spain</option>
+                    <option value="11">Germany</option>
+                    <option value="12">Singapore</option>
+                </select>
+                <i id="iconCountry" class="fas fa-check-circle"></i>
+            </div>
+            <div class="form-group" id="city_input">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city">
+                <i id="iconCity" class="fas fa-check-circle"></i>
+            </div>
+            <div class="form-group" id="cp_input">
+                <label for="cardPostal">Code postal</label>
+                <input type="text" class="form-control" id="cpCity">
+                <i id="iconCpCity" class="fas fa-check-circle"></i>
+            </div>
+            <div class="form-group" id="shipping">
+                <a href="#" id="confirm-shipping2">Confirm</a>
+            </div>
+          </form>
+        </div>
+        <!-- confirmInfo -->
+        <div class="container_form form_shop2 form3 opacity">
+          <span class="bubbleNumb">3</span>
+          <span class="title_section_form">Confirmation payement</span>
+          <form id="confirmInfo" class="closed">
+            </br>
+            <span id="checkbox_stuff" class="firstInput">
+              <input type="checkbox" name="agree">
+              I want to receive adds about new product available.
+            </span>
+            <span id="checkbox_stuff">
+              <input id="checkbox" type="checkbox" name="agree">
+              <span class="redAsterik">*</span>I agree to stuff
+            </span>
+            <div class="form-group" id="pay-now">
+              <a href="#" id="confirmCommand2">Confirm</a>
+            </div>
+          </form>
+        </div>
+        <a class="link_action" href="{{ path('cartShop2') }}">Cancel payement</a>
+      </div>
+      <div id="cart_recap" class="cartShop2 col-md-5 col-sm-5">
+        <p class="title_section">Shopping cart</p>
+        {% if articlesInCart is defined %}
+          {% for article in articlesInCart %}
+            <div class="product_cart" id="{{ article.id }}">
+              <div class="product_img">
+                <img class="pic" src="/vendor/images/{{article.shortName}}.png">
+              </div>
+              <div class="product_content">
+                  <span class="title">{{ article.title }}</span>
+                  <p class="description">{{ article.description }}</p>
+              </div>
+              <div class="product_price">
+                <span class="price">${{ article.price }}</span>
+              </div>
+            </div>
+          {% endfor %}
+            <hr>
+            <div id="total_price">
+              <div id="block_buy">
+                <span id="total">Total: $<span id="total_cart">{{ totalCart }}</span></span>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      </div>
+  </div>
+  {% endblock %}
+  {% block javascripts %}
+  {{ parent() }}
+  <script>
+    $(document).ready(function(){
+      new Card({
+            form: document.querySelector('form'),
+            container: '.card-wrapper'
+        });
+
+      // Click for openning form
+      $('.modify_btn').click(function(e) {
+        if($(this).parent().hasClass('closed')) {
+          $('form').addClass('closed')
+          $(this).parent().removeClass('closed');
+          $(this).removeClass('display');
+        } else {
+          $(this).parent().addClass('closed');
+        }
+      });
+
+      $('#confirm-shipping2').click(function(e) {
+        $('.form3').removeClass('opacity');
+      });
+
+      var owner = $("#owner"),
+          cardNumber = $('#cardNumber'),
+          cardNumberField = $('#card-number-field'),
+          confirm_card = $('#confirm-card2'),
+          CVV = $("#cvv"),
+          dateExpire = $('#date'),
+          shippingInfo = $("#confirm-shipping2");
+
+    var confirmCommand = $("#confirmCommand2");
+    var name = $("#name");
+    var street = $("#street");
+    var country = $("#country");
+    var city = $("#city");
+    var cpCity = $("#cpCity");
+
+    var ownerBoolean = false;
+    var numCbBoolean = false;
+    var dateBoolean = false;
+    var cvvBoolean = false;
+
+    owner.keyup(function() {
+      var res = owner.val().split(" ");
+      if (res.length == 2) {
+        ownerBoolean = true;
+        $("#owner").addClass("greeInput");
+        $("#iconOwner").addClass("moove");
+        $("#owner").removeClass("redInput");
+      } else {
+        ownerBoolean = false;
+        $("#iconOwner").removeClass("moove");
+        $("#owner").addClass("redInput");
+      }
+    });
+    cardNumber.keyup(function() {
+      if ((cardNumber.val()).length == 19) {
+        numCbBoolean = true;
+        $("#cardNumber").removeClass("redInput");
+        $("#cardNumber").addClass("greeInput");
+        $("#iconCb").addClass("moove");
+      } else {
+        numCbBoolean = false;
+        $("#cardNumber").addClass("redInput");
+        $("#iconCb").removeClass("moove");
+      }
+    });
+    dateExpire.keyup(function() {
+      if ((dateExpire.val()).length == 7) {
+        dateBoolean = true;
+        $("#date").removeClass("redInput");
+        $("#iconDate").addClass("moove");
+        $("#date").addClass("greeInput");
+      } else {
+        dateBoolean = false;
+        $("#iconDate").removeClass("moove");
+        $("#date").addClass("redInput");
+      }
+    });
+    CVV.keyup(function() {
+      if ((CVV.val()).length == 3) {
+        cvvBoolean = true;
+        $("#cvv").removeClass("redInput");
+        $("#iconCvv").addClass("moove");
+        $("#cvv").addClass("greeInput");
+      } else {
+        cvvBoolean = false;
+        $("#iconCvv").removeClass("moove");
+        $("#cvv").addClass("redInput");
+      }
+    });
+    name.keyup(function() {
+      var res = name.val().split(" ");
+      if (res.length == 2) {
+        nameBoolean = true;
+        $("#name").removeClass("redInput");
+        $("#iconOwner").addClass("moove");
+        $("#name").addClass("greeInput");
+      } else {
+        nameBoolean = false;
+        $("#iconOwner").removeClass("moove");
+        $("#name").addClass("redInput");
+      }
+    });
+    street.keyup(function() {
+      var res = street.val().split(" ");
+      if (res.length > 2) {
+        sreetBoolean = true;
+        $("#street").removeClass("redInput");
+        $("#iconStreet").addClass("moove");
+        $("#street").addClass("greeInput");
+      } else {
+        sreetBoolean = false;
+        $("#iconStreet").removeClass("moove");
+        $("#street").addClass("redInput");
+      }
+    });
+    city.keyup(function() {
+      if ((city.val()).length > 3) {
+        cityBoolean = true;
+        $("#city").removeClass("redInput");
+        $("#iconCity").addClass("moove");
+        $("#city").addClass("greeInput");
+      } else {
+        cityBoolean = false;
+        $("#iconCity").removeClass("moove");
+        $("#city").addClass("redInput");
+      }
+    });
+    cpCity.keyup(function() {
+      if ((cpCity.val()).length > 3) {
+        cpCityBoolean = true;
+        $("#cpCity").removeClass("redInput");
+        $("#iconCpCity").addClass("moove");
+        $("#cpCity").addClass("greeInput");
+      } else {
+        cpCityBoolean = false;
+        $("#iconCpCity").removeClass("moove");
+        $("#cpCity").addClass("redInput");
+      }
+    });
+
+      //
+      confirm_card.click(function(e) {
+        if(ownerBoolean == true) {
+          if(numCbBoolean == true) {
+            if(dateBoolean == true) {
+              if(cvvBoolean == true) {
+                $("#Oval-1").addClass('checked');
+                $("#shippingInfo").removeClass('closed');
+                $("#creditCard").addClass('closed');
+                $('#modify_creditC').addClass('display');
+                $('.form2').removeClass('opacity');
+              } else {
+                  $("#cvv").addClass("redInput");
+              }
+            } else {
+                $("#date").addClass("redInput");
+            }
+          } else {
+              $("#cardNumber").addClass("redInput");
+          }
+        } else {
+            $("#owner").addClass("redInput");
+        }
+      });
+
+      //
+      shippingInfo.click(function(e) {
+        $("#Oval-2").addClass('checked');
+        $("#confirmInfo").removeClass('closed');
+        $("#shippingInfo").addClass('closed');
+        $('#modify_shipping').addClass('display');
+      });
+
+      //
+      confirmCommand.click(function(e) {
+          // If checkbox checked
+          if( $('#checkbox').is(':checked') ) {
+            e.preventDefault();
+            var name = $('#owner').val();
+            var cvv = $('#cvv').val();
+            var cardNumber = $('#cardNumber').val();
+            var expire = $('#date').val();
+            var city = $('#city').val();
+            var cpCity = $('#cpCity').val();
+            var totalCart = $('#total_cart').text();
+            var cartFloat = parseFloat(totalCart);
+            $("#Oval-3").addClass('checked');
+
+            var cardNumberReal = cardNumber.split(" ");
+            var cardNumberReal2 = cardNumberReal[0]+cardNumberReal[1]+cardNumberReal[2]+cardNumberReal[3];
+
+            // Get id button clicked
+            $.ajax({
+              type: "POST",
+              url: "{{ path('shippingInfo2') }}",
+              data: { name: name, cvv: cvv, cardNumber: cardNumberReal2, city: city, cpCity: cpCity, cartFloat: cartFloat },
+              dataType: 'json',
+              async: true,
+              success: function(){
+                console.log("Send");
+              },
+              complete : function(status){
+                // If answer from controller is OK
+                if(status['status'] == 200) {
+                  $("#greyBack").removeClass('no_display');
+                  $("#congrat").removeClass('no_display');
+                }
+              }
+            });
+          // If confirm without checked box
+          } else {
+            console.log("NON");
+          }
+      });
+    });
+  </script>
+  {% endblock %}

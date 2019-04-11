@@ -1,0 +1,148 @@
+{# templates/home.html.twig #}
+{% extends 'base3.html.twig' %}
+  {% block body %}
+  <div class="no_display" id="greyBack"></div>
+  <div class="no_display wrapper" id="congrat">
+    <div id="text">
+      <h2>Thanks you!</h2>
+      <p>Your order is made.</br>You will receive a confirmation email.</p>
+    </div>
+    <div class="form-group">
+        <a href="{{ path('shop3') }}" class="btn3">Return to home</a>
+    </div>
+  </div>
+  <div id="cart_shop1">
+    <div id="triangle-up"></div>
+  </div>
+  <div id="container">
+    <div id="theTarget" class="skippr3">
+        <div style="background-image: url(/vendor/images/img1.jpg)"></div>
+        <div style="background-image: url(/vendor/images/img2.jpg)"></div>
+        <div style="background-image: url(/vendor/images/img3.jpg)"></div>
+    </div>
+  </div>
+  <div class="container margin articlesMargin">
+      <div class="row">
+      {% for article in articles %}
+          <div class="article3 col-md-4 col-sm-6">
+              <div class="product-grid articles3">
+                <span class="add-to-cart" id="{{ article.id }}"><i class="fas fa-plus-circle"></i></span>
+                  <div class="product-image">
+                    <img class="pic-1" src="/vendor/images/{{article.shortName}}.png">
+                  </div>
+                  <div class="product-content">
+                      <span class="price">${{ article.price }}</span>
+                      <span class="brand">{{ article.brand }}</span>
+                      <span class="title">{{ article.title }}</span>
+                      <!-- <a class="add-to-cart" id="{{ article.id }}" href="#">+ Add To Cart</a> -->
+                  </div>
+              </div>
+          </div>
+    {% endfor %}
+    </div>
+  </div>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#theTarget").skippr();
+      // Click for openning form
+      $('#cart_button1').click(function(e) {
+        if($('#cart_shop1').hasClass('closed1')) {
+          $('#cart_shop1').removeClass('closed1');
+        } else {
+          $('#cart_shop1').addClass('closed1');
+          // Get data for cart
+            $.ajax({
+              type: "POST",
+              url: "{{ path('cartShop3') }}",
+              dataType: 'json',
+              async: true,
+              success: function(msg){
+                console.log("Cart AJAX Sent");
+              },
+              complete: function(data){
+                $('#triangle-up').html(data['responseText']).show();
+              }
+          });
+
+        }
+      });
+
+      $('.container').click(function(e) {
+        if($('#cart_shop1').hasClass('closed1')) {
+          $('#cart_shop1').removeClass('closed1');
+        }
+      });
+
+      $(".article3").mouseover(function() {
+        $(this).find(".add-to-cart").addClass("readyClick");
+      });
+      $(".article3").mouseout(function() {
+        if( !$(this).find("i").hasClass("fa-check-circle") ) {
+            $(this).find(".add-to-cart").removeClass("readyClick");
+        }
+      });
+
+      $(".add-to-cart").click(function() {
+        var numItemInCart;
+        // If product not added in cart
+        if($(this).find("i").hasClass("fa-plus-circle")) {
+          $(this).find("i").removeClass("fa-plus-circle");
+          $(this).find("i").addClass("fa-check-circle");
+
+          numItemInCart = $(".countArticles").text();
+          numItemInCart = parseInt(numItemInCart) + 1;
+
+          // Get id button clicked
+          var idArticle = (this.id);
+          $.ajax({
+            type: "POST",
+            url: "{{ path('addProduct1') }}",
+            data: { id: idArticle },
+            dataType: 'json',
+            async: true,
+            success: function(){
+                console.log("OK");
+            },
+            complete: function(data){
+                console.log(data);
+                $(".countArticles").html(numItemInCart);
+            }
+          });
+        // If product alreay in the cart
+        } else {
+          $(this).find("i").addClass("fa-plus-circle");
+          $(this).find("i").removeClass("fa-check-circle");
+          numItemInCart = $(".countArticles").text();
+          numItemInCart = parseInt(numItemInCart) - 1;
+
+          // Get id button clicked
+          var idArticle = (this.id);
+          $.ajax({
+            type: "POST",
+            url: "{{ path('removeProduct1') }}",
+            data: { id: idArticle },
+            dataType: 'json',
+            async: true,
+            success: function(){
+                console.log("OK");
+            },
+            complete: function(data){
+                console.log(data);
+                $(".countArticles").html(numItemInCart);
+            }
+          });
+        }
+      });
+
+      // 5 seconds user test
+      if (localStorage.getItem("userTest") == 1) {
+        // Your application has indicated there's an error
+        window.setTimeout(function(){
+            // Move to a new location or you can do something else
+            window.location.href = "http://localhost:8000/";
+        }, 5000);
+      }
+   });
+  </script>
+  {% endblock %}

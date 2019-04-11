@@ -1,0 +1,80 @@
+{# templates/home.html.twig #}
+{% extends 'base2.html.twig' %}
+  {% block body %}
+  <!-- If the cart is full -->
+  {% if articlesInCart is defined %}
+  <div id="cart_container" class="container margin">
+    {% for article in articlesInCart %}
+      <div class="product_cart" id="{{ article.id }}">
+        <div class="product_img">
+          <img class="pic" src="/vendor/images/{{article.shortName}}.png">
+        </div>
+        <div class="product_content">
+            <h3 class="title">{{ article.title }}</h3>
+            <p class="description">{{ article.description }}</p>
+            <a class="add-to-cart" id="{{ article.id }}" href=""><i class="far fa-trash-alt"></i> Remove</a>
+        </div>
+        <div class="product_price">
+          <span class="price">${{ article.price }}</span>
+        </div>
+      </div>
+    {% endfor %}
+      <hr>
+      <div id="total_price">
+        <a id="return_shop" href="{{ path('shop2') }}">Return to shop</a>
+        <div id="block_buy">
+          <p id="total">Total: <span id="total_cart">${{ totalCart }}</span></p>
+          <a class="btn_checkout" href="{{ path('payementInfo2') }}">Checkout</a>
+        </div>
+      </div>
+    </div>
+  <!-- If the cart is empty, so a payement is already done -->
+  {% elseif payement is defined %}
+  <div id="cart_container" class="container margin">
+    <div id="orderRecap">
+      <h2><i class="far fa-clipboard"></i> Your order</h2>
+      <div id="blockRecap">
+        <span id="date_order">20/01/2019</span>
+        {{ payement.name }}
+        <div class="container-fluid">
+          <ul class="list-unstyled multi-steps">
+            <li class="is-active">Order made</li>
+            <li>Order in preparation</li>
+            <li>Sent out your package</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="footerOrder">
+    <p><i class="fas fa-info-circle"></i> If you have a question about your order state or your
+      paiement confirmation, do not hesitate to contact us.</p>
+      <hr>
+    <a id="return_shop" href="{{ path('shop2') }}"><i class="fas fa-angle-left"></i> Return to shop</a>
+  </div>
+
+  <!-- Nothing is in the cart, so we invite people to select item(s) -->
+  {% else %}
+    <h3>Don't be shy, buy!</h3>
+  {% endif %}
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+        $("a").click(function() {
+          // Get id button clicked
+          var idArticle = (this.id);
+          $.ajax({
+            type: "POST",
+            url: "{{ path('removeProduct2') }}",
+            data: { id: idArticle },
+            dataType: 'json',
+            async: true,
+            complete: function(msg){
+              // Remove article from html
+              $('#'+idArticle).addClass("disapear");
+            }
+        });
+      });
+   });
+  </script>
+  {% endblock %}

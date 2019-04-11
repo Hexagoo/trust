@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+  <html>
+      <head>
+          <meta charset="UTF-8">
+          <title>{% block title %}TRUST RESEARCHES{% endblock %}</title>
+        {% block stylesheets %}
+            <link rel="stylesheet" href="/vendor/css/grid.css">
+            <link rel="stylesheet" type="text/css" href="/vendor/css/main.css">
+            <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        {% endblock %}
+      </head>
+      <body>
+        {% block body %}
+        <div id="block_link">
+          <a class="link_shop" href="{{ path('shop1') }}">Website 1</a>
+          <a class="link_shop" href="{{ path('shop2') }}">Website 2</a>
+          <a class="link_shop" href="{{ path('shop3') }}">Website 3</a>
+        </div>
+        <div id="img_block">
+          <img src="/vendor/images/logo.png" alt="">
+        </div>
+        <a id="userTest5seconds" href="#"><i class="far fa-clock"></i></a>
+        {% endblock %}
+        <footer></footer>
+        {% block javascripts %}
+          <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+          <script src="{{ asset('build/js/app.js') }}"></script>
+          <script>
+          // Stock in local storage value for 5 seconds test
+          if (localStorage.getItem("userTest") == 1) {
+            $("#userTest5seconds").find("i").removeClass("far");
+            $("#userTest5seconds").find("i").addClass("fas");
+          }
+          $("#userTest5seconds").click(function() {
+              if (localStorage.getItem("userTest") === null || localStorage.getItem("userTest") == 0) {
+                $(this).find("i").removeClass("far");
+                $(this).find("i").addClass("fas");
+                localStorage.setItem('userTest', 1);
+              } else {
+                $(this).find("i").removeClass("fas");
+                $(this).find("i").addClass("far");
+                localStorage.setItem('userTest', 0);
+              }
+          });
+          </script>
+        {% endblock %}
+      </body>
+  </html>

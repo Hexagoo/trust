@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}TRUST RESEARCHES{% endblock %}</title>
+      {% block stylesheets %}
+          <link rel="stylesheet" href="/vendor/css/grid.css">
+          <link rel="stylesheet" type="text/css" href="/vendor/css/main.css">
+          <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        {% endblock %}
+    </head>
+    <body>
+        <div class="no_display" id="greyBack"></div>
+        <div class="no_display" id="congrat">
+          <div id="text">
+            <h2>Thanks you!</h2>
+            <p>Your order is made.</br>You will receive a confirmation email.</p>
+          </div>
+          <div id="confirmShipping1">
+            <a href="{{ path('cartShop1') }}" class="btn_checkout">OK</a>
+          </div>
+        </div>
+        <div class="footer_payement">
+          <span id="title_footerCochin">M.</span>
+          <i class="fas fa-lock"><span class="footerInfo">Secure environment</span></i>
+        </div>
+        {% block body %}
+        {% endblock %}
+        {% block javascripts %}
+          <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+          <script src="/build/js/card.js" charset="utf-8"></script>
+          <script src="{{ asset('build/js/app.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

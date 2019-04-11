@@ -1,0 +1,111 @@
+index:
+   path: /
+   controller: App\Controller\DefaultController::index
+
+##### ###### ######
+##### Shop1 ######
+##### ###### ######
+shop1:
+   path: /shop1
+   controller: App\Controller\Shop1Controller::index
+
+##### Categories Shop1 ######
+categories:
+   path: /shop1/products/{slug}
+   controller: App\Controller\Shop1Controller::indexCategories
+
+cartShop1:
+   path: /shop1/cart
+   controller: App\Controller\Shop1Controller::cart
+
+addProduct1:
+   path: /shop1/cart/add
+   controller: App\Controller\Shop1Controller::addProductToCart
+
+removeProduct1:
+   path: /shop1/car/remove
+   controller: App\Controller\Shop1Controller::removeProductFromCart
+
+# Display the credit card info
+displayPayementForm1:
+   path: /shop1/payement
+   controller: App\Controller\Shop1Controller::displayPayementForm
+
+# Save the CB info
+saveCreditCardInfo1:
+   path: /shop1/payement/save
+   controller: App\Controller\Shop1Controller::saveCreditCardInfo
+
+# Display the credit card info
+displayShippingForm1:
+   path: /shop1/payement/shipping/{idPayement}
+   controller: App\Controller\Shop1Controller::displayShippingForm
+
+# Save the shipping info
+saveShippingInfo1:
+   path: /shop1/payement/shipping-save
+   controller: App\Controller\Shop1Controller::saveShippingInfo
+
+# Display the confirmation view
+displayConfirmationView1:
+   path: /shop1/payement/confirmation/{idPayement}
+   controller: App\Controller\Shop1Controller::displayConfirmationView
+
+confirmationPaiement1:
+   path: /shop1/payement/confirmation-save
+   controller: App\Controller\Shop1Controller::confirmationPaiement
+
+##### ###### ######
+##### Shop2 ######
+##### ###### ######
+shop2:
+   path: /shop2
+   controller: App\Controller\Shop2Controller::index
+
+categories2:
+   path: /shop2/categories/{slug}
+   controller: App\Controller\Shop2Controller::indexCategories
+
+cartShop2:
+   path: /shop2/cart
+   controller: App\Controller\Shop2Controller::cart
+
+payementInfo2:
+   path: /shop2/payement
+   controller: App\Controller\Shop2Controller::payementInfo
+
+addProduct2:
+   path: /shop2/cart/add
+   controller: App\Controller\Shop2Controller::addProductToCart
+
+removeProduct2:
+   path: /shop2/car/remove
+   controller: App\Controller\Shop1Controller::removeProductFromCart
+
+shippingInfo2:
+   path: /shop2/payement/shipping
+   controller: App\Controller\Shop2Controller::shippingInfo
+
+
+##### ###### ######
+##### Shop3 ######
+##### ###### ######
+shop3:
+   path: /shop3
+   controller: App\Controller\Shop3Controller::index
+
+categories3:
+   path: /shop3/categories/{slug}
+   controller: App\Controller\Shop3Controller::indexCategories
+
+cartShop3:
+   path: /shop3/cart
+   controller: App\Controller\Shop3Controller::cart
+
+slidesInfo:
+    path: /shop3/secure
+    controller: App\Controller\Shop3Controller::slidesInfo
+
+payementInfo3:
+   path: /shop3/payement/shipping
+   controller: App\Controller\Shop3Controller::payementInfo

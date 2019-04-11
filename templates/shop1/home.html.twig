@@ -1,0 +1,95 @@
+{# templates/home.html.twig #}
+{% extends 'base1.html.twig' %}
+  {% block body %}
+  <div id="container">
+    <div id="theTarget">
+        <div style="background-image: url(/vendor/images/img1.jpg)"></div>
+        <div style="background-image: url(/vendor/images/img2.jpg)"></div>
+        <div style="background-image: url(/vendor/images/img3.jpg)"></div>
+    </div>
+  </div>
+  <div class="container margin articlesMargin">
+      <div class="row">
+      {% for article in articles %}
+          <div class="article col-md-4 col-sm-6">
+              <div class="product-grid">
+                  <span class="add-to-cart" id="{{ article.id }}">+</span>
+                  <div class="product-image">
+                      <a href="#">
+                          <img class="pic-1" src="/vendor/images/{{article.shortName}}.png">
+                      </a>
+                  </div>
+                  <div class="product-content">
+                      <span class="price">${{ article.price }}</span>
+                      <span class="brand">{{ article.brand }}</span>
+                      <span class="title">{{ article.title }}</span>
+                  </div>
+              </div>
+          </div>
+    {% endfor %}
+    </div>
+  </div>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script>
+    $(document).ready(function(){
+      $("#theTarget").skippr();
+      // Add OR remove an article
+      $(".add-to-cart").click(function() {
+        var numItemInCart;
+        // If product not added in cart
+        if($(this).text() == "+") {
+          $(this).text("-");
+          numItemInCart = $(".countArticles").text();
+          numItemInCart = parseInt(numItemInCart) + 1;
+
+          // Get id button clicked
+          var idArticle = (this.id);
+          $.ajax({
+            type: "POST",
+            url: "{{ path('addProduct1') }}",
+            data: { id: idArticle },
+            dataType: 'json',
+            async: true,
+            success: function(){
+                console.log("OK");
+            },
+            complete: function(data){
+                console.log(data);
+                $(".countArticles").html(numItemInCart);
+            }
+          });
+        // If product alreay in the cart
+        } else {
+          $(this).text("+");
+          // Get id button clicked
+          numItemInCart = $(".countArticles").text();
+          numItemInCart = parseInt(numItemInCart) - 1;
+          var idArticle = (this.id);
+          $.ajax({
+            type: "POST",
+            url: "{{ path('removeProduct1') }}",
+            data: { id: idArticle },
+            dataType: 'json',
+            async: true,
+            success: function(){
+                console.log("OK");
+            },
+            complete: function(data){
+                console.log(data);
+                $(".countArticles").html(numItemInCart);
+            }
+          });
+        }
+      });
+
+      // 5 seconds user test
+      if (localStorage.getItem("userTest") == 1) {
+        // Your application has indicated there's an error
+        window.setTimeout(function(){
+            // Move to a new location or you can do something else
+            window.location.href = "http://localhost:8000/";
+        }, 5000);
+      }
+   });
+  </script>
+  {% endblock %}

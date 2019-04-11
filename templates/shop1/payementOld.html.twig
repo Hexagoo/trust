@@ -1,0 +1,296 @@
+{# templates/home.html.twig #}
+{% extends 'base_payement.html.twig' %}
+  {% block body %}
+  <div class="no_display" id="greyBack"></div>
+  <div class="no_display" id="congrat">
+    <div id="text">
+      <h2>Thanks you!</h2>
+      <p>Your order is made.</br>You will receive a confirmation email.</p>
+    </div>
+    <a href="{{ path('cartShop1') }}">OK</a>
+  </div>
+  <div class="container">
+      <div id="payement_block">
+        <!-- creditCard -->
+        <div class="container_form">
+          <!-- SVG -->
+          <svg class="check" width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+          	<g id="blog_desktop" transform="translate(-1012.000000, -810.000000)">
+          		<circle id="Oval-1" fill="#E7E7E7" class="st0" cx="1026.5" cy="824.5" r="14.5"/>
+          		<path id="check_1" class="st1" d="M1033.2,818.5c-0.1,0-0.2,0.1-0.3,0.2c-2.8,3.2-5.8,7-8.6,10.3l-4.2-4c-0.2-0.2-0.6-0.2-0.8,0.1
+          			s-0.2,0.7,0.1,0.9l0,0l4.6,4.4c0.2,0.2,0.5,0.2,0.7,0c2.9-3.4,6.1-7.3,8.9-10.7c0.2-0.2,0.2-0.6,0-0.9
+          			C1033.5,818.6,1033.4,818.5,1033.2,818.5" id="Fill-1" stroke="#000000" fill="#000000"/>
+          	</g>
+          </g>
+          </svg>
+          <form id="creditCard">
+            <span class="section_click">Payement</span>
+            <a id="modify_creditC" class="modify_btn" href="#" class="hide">Modify</a>
+            <span class="section">Credit card
+              <div class="form-group first_form" id="credit_cards">
+                <img src="/vendor/images/visa.png" id="visa">
+                <img src="/vendor/images/master.png" id="mastercard">
+                <img src="/vendor/images/amex.png" id="amex">
+              </div>
+            </span>
+            <hr>
+            <div class="form-group owner">
+                <label for="owner">Owner</label>
+                <input type="text" class="form-control" pattern="[A-Za-z]" id="owner">
+            </div>
+            <div class="form-group" id="card-number-field">
+                <label for="cardNumber">Card Number</label>
+                <input type="text" class="form-control" id="cardNumber">
+            </div>
+            <div class="form-group" id="expiration-date">
+                <label>Expiration Date</label>
+                <select id="month">
+                    <option value="00">Month</option>
+                    <option value="01">January</option>
+                    <option value="02">February </option>
+                    <option value="03">March</option>
+                    <option value="04">April</option>
+                    <option value="05">May</option>
+                    <option value="06">June</option>
+                    <option value="07">July</option>
+                    <option value="08">August</option>
+                    <option value="09">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+                <select id="year">
+                    <option value="00">Year</option>
+                    <option value="16">2016</option>
+                    <option value="17">2017</option>
+                    <option value="18">2018</option>
+                    <option value="19">2019</option>
+                    <option value="20">2020</option>
+                    <option value="21">2021</option>
+                </select>
+            </div>
+            <div class="form-group" id="cvv-field">
+                <label for="cvv">CVV</label>
+                <input type="text" class="form-control" id="cvv">
+            </div>
+            <div class="form-group" id="pay-now">
+                <a href="#" id="confirm-card">Confirm</a>
+            </div>
+          </form>
+        </div>
+        <!-- shippingInfo -->
+        <div class="container_form">
+          <!-- SVG -->
+          <svg class="check" width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="blog_desktop" transform="translate(-1012.000000, -810.000000)">
+              <circle id="Oval-2" fill="#E7E7E7" class="st0" cx="1026.5" cy="824.5" r="14.5"/>
+              <path id="check_1" class="st1" d="M1033.2,818.5c-0.1,0-0.2,0.1-0.3,0.2c-2.8,3.2-5.8,7-8.6,10.3l-4.2-4c-0.2-0.2-0.6-0.2-0.8,0.1
+                s-0.2,0.7,0.1,0.9l0,0l4.6,4.4c0.2,0.2,0.5,0.2,0.7,0c2.9-3.4,6.1-7.3,8.9-10.7c0.2-0.2,0.2-0.6,0-0.9
+                C1033.5,818.6,1033.4,818.5,1033.2,818.5" id="Fill-1" stroke="#000000" fill="#000000"/>
+            </g>
+          </g>
+          </svg>
+          <form id="shippingInfo" class="closed">
+            <span class="section_click">Shipping</span>
+            <a id="modify_shipping" class="modify_btn" href="#" class="hide">Modify</a>
+            <div class="form-group first_form">
+                <label for="owner">Name</label>
+                <input type="text" class="form-control" id="name">
+            </div>
+            <div class="form-group street" id="street_input">
+                <label for="street">Street, road</label>
+                <input type="text" class="form-control" id="street">
+            </div>
+            <div class="form-group apt" id="apt_input">
+                <label for="apt">Apt.</label>
+                <input type="text" class="form-control" id="apt">
+            </div>
+            <div class="form-group">
+                <label for="country">Country</label>
+                <select id="Country">
+                    <option value="xx">Choose your country</option>
+                    <option value="01">Japan</option>
+                    <option value="02">Taiwan </option>
+                    <option value="03">France</option>
+                    <option value="04">United Kingdon</option>
+                    <option value="05">United State of America</option>
+                    <option value="06">Jamaica</option>
+                    <option value="07">China</option>
+                    <option value="08">South Korea</option>
+                    <option value="09">Australia</option>
+                    <option value="10">Spain</option>
+                    <option value="11">Germany</option>
+                    <option value="12">Singapore</option>
+                </select>
+            </div>
+            <div class="form-group" id="city_input">
+                <label for="city">City</label>
+                <input type="text" class="form-control" id="city">
+            </div>
+            <div class="form-group" id="cp_input">
+                <label for="cardPostal">Code postal</label>
+                <input type="text" class="form-control" id="cpCity">
+            </div>
+            <div class="form-group" id="shipping">
+                <a href="#" id="confirm-shipping">Confirm</a>
+            </div>
+          </form>
+        </div>
+        <!-- confirmInfo -->
+        <div class="container_form">
+          <!-- SVG -->
+          <!-- SVG -->
+          <svg class="check" width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+          <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+            <g id="blog_desktop" transform="translate(-1012.000000, -810.000000)">
+              <circle id="Oval-3" fill="#E7E7E7" class="st0" cx="1026.5" cy="824.5" r="14.5"/>
+              <path id="check_1" class="st1" d="M1033.2,818.5c-0.1,0-0.2,0.1-0.3,0.2c-2.8,3.2-5.8,7-8.6,10.3l-4.2-4c-0.2-0.2-0.6-0.2-0.8,0.1
+                s-0.2,0.7,0.1,0.9l0,0l4.6,4.4c0.2,0.2,0.5,0.2,0.7,0c2.9-3.4,6.1-7.3,8.9-10.7c0.2-0.2,0.2-0.6,0-0.9
+                C1033.5,818.6,1033.4,818.5,1033.2,818.5" id="Fill-1" stroke="#000000" fill="#000000"/>
+            </g>
+          </g>
+          </svg>
+          <form id="confirmInfo" class="closed first_form">
+            <span class="section_click">Confirmation payement</span>
+            <!-- <a class="modify_btn" href="#" class="hide">Modify</a> -->
+            <p id="totalCart">${{ totalCart }}</p>
+            </br>
+            <span id="checkbox_stuff">
+              <input id="checkbox" type="checkbox" name="agree">
+              I agree to stuff
+            </span>
+          </form>
+        </div>
+        <a class="link_action" href="{{ path('cartShop1') }}">Cancel payement</a>
+        <a href="#" id="confirm-command">Confirm</a>
+      </div>
+  </div>
+  <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+  <script src="/vendor/js/jquery.payform.min.js" charset="utf-8"></script>
+  <script>
+    $(document).ready(function(){
+
+      // Click for openning form
+      $('.modify_btn').click(function(e) {
+        if($(this).parent().hasClass('closed')) {
+          $('form').addClass('closed')
+          $(this).parent().removeClass('closed');
+          $(this).removeClass('display');
+        } else {
+          $(this).parent().addClass('closed');
+        }
+      });
+
+      var owner = $("#owner"),
+          cardNumber = $('#cardNumber'),
+          cardNumberField = $('#card-number-field'),
+          confirm_card = $('#confirm-card'),
+          CVV = $("#cvv"),
+          mastercard = $("#mastercard"),
+          visa = $("#visa"),
+          amex = $("#amex");
+          shippingInfo = $("#confirm-shipping"),
+          confirmInfo = $("#confirm-command");
+
+          // cardNumber.payform('formatCardNumber');
+          // CVV.payform('formatCardCVC');
+
+
+      // FONCTIONS
+      cardNumber.keyup(function() {
+          amex.removeClass('transparent');
+          visa.removeClass('transparent');
+          mastercard.removeClass('transparent');
+
+          if ($.payform.validateCardNumber(cardNumber.val()) == false) {
+              cardNumberField.removeClass('has-success');
+              cardNumberField.addClass('has-error');
+          } else {
+              cardNumberField.removeClass('has-error');
+              cardNumberField.addClass('has-success');
+          }
+
+          if (cardNumber.val() == '4716108999716531') {
+              mastercard.addClass('transparent');
+              amex.addClass('transparent');
+          } else if ($.payform.parseCardType(cardNumber.val()) == 'amex') {
+              mastercard.addClass('transparent');
+              visa.addClass('transparent');
+          } else if ($.payform.parseCardType(cardNumber.val()) == 'mastercard') {
+              amex.addClass('transparent');
+              visa.addClass('transparent');
+          }
+      });
+
+      //
+      confirm_card.click(function(e) {
+        // var isCardValid = $.payform.validateCardNumber(cardNumber);
+        // var isCvvValid = $.payform.validateCardCVC(cvv);
+        //
+        // if(owner.val().length < 5){
+        //     alert("Wrong owner name");
+        // } else if (!isCardValid) {
+        //     alert("Wrong card number");
+        // } else if (!isCvvValid) {
+        //     alert("Wrong CVV");
+        // } else {
+            console.log("Tout est OK");
+            $("#Oval-1").addClass('checked');
+            $("#shippingInfo").removeClass('closed');
+            $("#creditCard").addClass('closed');
+            $('#modify_creditC').addClass('display');
+        // }
+      });
+
+      //
+      shippingInfo.click(function(e) {
+        $("#Oval-2").addClass('checked');
+        $("#confirmInfo").removeClass('closed');
+        $("#shippingInfo").addClass('closed');
+        $('#modify_shipping').addClass('display');
+      });
+      //
+      confirmInfo.click(function(e) {
+          // If checkbox checked
+          if( $('#checkbox').is(':checked') ) {
+            e.preventDefault();
+            var name = $('#owner').val();
+            var cvv = $('#cvv').val();
+            var cardNumber = $('#cardNumber').val();
+            var expireMonth = $('#month').val();
+            var expireYear = $('#year').val();
+            var city = $('#city').val();
+            var cpCity = $('#cpCity').val();
+            var price = $('#totalCart').text().split('$');
+            var totalCart = price[1];
+            $("#Oval-3").addClass('checked');
+
+            // Get id button clicked
+            console.log(totalCart);
+            $.ajax({
+              type: "POST",
+              url: "{{ path('shippingInfo1') }}",
+              data: { name: name, cvv: cvv, cardNumber: cardNumber, city: city, cpCity: cpCity, totalCart: totalCart },
+              dataType: 'json',
+              async: true,
+              success: function(){
+                console.log(msg);
+              },
+              complete : function(status){
+                // If answer from controller is OK
+                if(status['status'] == 200) {
+                  $("#greyBack").removeClass('no_display');
+                  $("#congrat").removeClass('no_display');
+                }
+              }
+            });
+          // If confirm without checked box
+          } else {
+            console.log("NON");
+          }
+      });
+    });
+  </script>
+  {% endblock %}

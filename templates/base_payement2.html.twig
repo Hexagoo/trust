@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}TRUST RESEARCHES{% endblock %}</title>
+      {% block stylesheets %}
+          <link rel="stylesheet" href="/vendor/css/grid.css">
+          <link rel="stylesheet" type="text/css" href="/vendor/css/main.css">
+          <link rel="stylesheet" href="{{ asset('build/css/app.css') }}">
+          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        {% endblock %}
+    </head>
+    <body>
+        {% block body %}
+        {% endblock %}
+        {% block javascripts %}
+          <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
+          <script src="/build/js/card.js" charset="utf-8"></script>
+          <script src="{{ asset('build/js/app.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

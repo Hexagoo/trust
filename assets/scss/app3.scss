@@ -1,0 +1,450 @@
+$color : #BCBCBC;
+$text : #575757;
+
+html {
+  font-family: 'Avenir' !important;
+}
+
+hr {
+  border-top: 1px solid $color;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+#header {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.16);
+
+  background-color: #FFFFFF;
+  z-index: 3;
+  font-size: 1.3em;
+  margin: 0 auto;
+  text-align: center;
+  height: 65px;
+  vertical-align: middle;
+
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  .fas {
+    font-size: 1.3em;
+  }
+  #countArticles {
+    position: absolute;
+    user-select: none;
+    cursor: default;
+    font-size: 0.6em;
+    background: #f07379;
+    width: 1.4em;
+    height: 1.4em;
+    color: #FFFFFF;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-weight: 800;
+    font-family: Avenir;
+  }
+}
+
+
+#content {
+  padding-top: 20px;
+}
+
+#content > a {
+  text-decoration: none;
+  font-size: 1.4em;
+  margin-left: 15px;
+  margin-right: 15px;
+  display: inline;
+  color: #333;
+}
+#content > a:hover {
+  color: $color;
+}
+
+.margin {
+  z-index: 2;
+  margin-top: 150px;
+  margin-bottom: 10%;
+}
+.articlesMargin {
+  padding-left: 3%;
+  padding-right: 3%;
+}
+
+/*****************************/
+/* SHOP 1 ----- HOME *********/
+/*****************************/
+.article {
+  margin-bottom: 4%;
+}
+
+.product-content {
+  font-family: 'Avenir';
+  .brand {
+    left: 0;
+    font-size: 2em;
+    display: block;
+    font-weight: bold;
+    text-align: left;
+    // float: right;
+  }
+  .title {
+    text-align: left;
+    font-size: 1.4em;
+    display: block;
+  }
+  .price {
+    float: right;
+    display: block;
+  }
+}
+
+
+
+
+/*****************************/
+/* SHOP 1 ----- CART *********/
+/*****************************/
+#cart_container {
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+.product_cart {
+  margin-bottom: 50px;
+  width: 100%;
+  display: inline-block;
+  // 1ère colonne
+  .product_img{
+    width: 35%;
+    float: left;
+    display: block;
+    img {
+      border: 1px solid #BCBCBC;
+      border-radius: 5px;
+      width: 100%;
+    }
+  }
+  // 2ème colonne
+  .product_content {
+    float: left;
+    width: 40%;
+    margin-left: 5%;
+    .title {
+      font-size: 1.8em;
+    }
+    .description {
+      font-size: 1.5em;
+    }
+    .add-to-cart {
+      display: block;
+      font-size: 1.5em;
+      margin-top: 10%;
+    }
+  }
+  // 3ème colonne
+  .product_price {
+    display: block;
+    margin-top: 13px;
+    position: relative;
+    .price {
+      font-size: 2em;
+      font-weight: bold;
+      position: absolute;
+      right: 0px;
+    }
+  }
+}
+
+#total_price {
+  position: relative;
+    #return_shop {
+      display: inline;
+      font-size: 1.6em;
+    }
+    #total_cart {
+      font-weight: bold;
+    }
+    #block_buy {
+      position: absolute;
+      right: 0;
+      display: inline-block;
+      #total {
+        font-size: 2em;
+      }
+      #btn_checkout {
+        text-align: center;
+        display: block;
+        border-radius: 5px;
+        color: #FFF;
+        background: #5c5c5c;
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.31);
+        text-decoration: none;
+        font-size: 2em;
+        padding: 5px 35px;
+      }
+      #btn_checkout:hover {
+        background: #FFF;
+        color: #333;
+      }
+    }
+}
+
+
+/*****************************/
+/* SHOP 1 ----- CREDIT CARD */
+/*****************************/
+.container_form {
+  position: relative;
+  margin-bottom: 5%;
+  // SVG COLORS
+  svg {
+    position: absolute;
+    right: -13px;
+    top: -13px;
+    z-index: 5;
+    circle {
+      -webkit-transition: all 0.4s; /* Safari */
+      transition: all 0.4s;
+    }
+  }
+
+  .checked {
+    fill: #8DFFDC !important;
+  }
+}
+
+
+.transparent {
+    opacity: 0.2;
+}
+
+.no_display {
+  display: none;
+}
+
+.disapear {
+  display: none;
+}
+
+.section_click {
+  width: 100%;
+  font-size: 1.8em;
+  font-weight: bold;
+  margin-bottom: 10px;
+  display: inline;
+}
+
+.link_action {
+  text-decoration: underline;
+  font-size: 1.4em;
+}
+
+.form-group {
+  margin-bottom: 15px;
+  img {
+    width: 10%;
+    margin-right: 10px;
+  }
+}
+
+.section {
+  font-size: 1.7em;
+  margin-top: 13px;
+  display: block;
+  #credit_cards {
+    display: inline;
+    margin-left: 40%;
+  }
+}
+
+.closed {
+  height: 56px;
+  border: 1.5px solid #DBDBDB;
+}
+.closed-special {
+  height: 156px;
+}
+.display {
+  display: inline-block !important;
+}
+
+#payement_block {
+  width: 550px;
+  margin: 0 auto;
+  #confirm-command {
+    width: 30%;
+    font-size: 1.7em;
+    margin: 0 auto;
+    border: 1px solid #5c5c5c;
+    text-align: center;
+    display: block;
+    border-radius: 5px;
+    color: #FFF;
+    background: #5c5c5c;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.31);
+    text-decoration: none;
+    padding: 5px 35px;
+  }
+  #confirm-command:hover {
+    -webkit-transition: all 0.3s; /* Safari */
+    transition: all 0.3s;
+    color: #5c5c5c;
+    background: #FFF;
+    box-shadow: 0px 0px 0px;
+    border: 1px solid #5c5c5c;
+  }
+}
+
+label {
+  display: block;
+  font-size: 1.3em;
+}
+select {
+  background: #F5F5F5;
+  border: 1px solid #b7b7b7;
+  border-radius: 5px;
+  outline: none;
+  text-overflow: clip;
+  font-size: 1.4em;
+  padding: 4px 8px;
+}
+input {
+  width: 270px;
+  background: #fff;
+  border: 1px solid #b7b7b7;
+  border-radius: 5px;
+  outline: none;
+  text-overflow: clip;
+  font-size: 1.4em;
+  padding: 4px 8px;
+}
+input:focus {
+  border: 1px solid #3a3a3a;
+}
+
+.container_form form {
+  margin-bottom: 20px;
+  padding: 15px 20px 20px 20px;
+  border-radius: 5px;
+  border: 1.5px solid #333;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  -webkit-transition: all 0.3s; /* Safari */
+  transition: all 0.3s;
+  .modify_btn {
+    display: none;
+    right: 20px;
+    position: absolute;
+    font-size: 1.5em;
+  }
+}
+
+#confirmInfo {
+  #totalCart {
+    display: inline;
+    position: absolute;
+    right: 20px;
+    top: 0;
+    font-size: 1.8em;
+  }
+  #checkbox_stuff {
+    margin-top: 20px;
+    display: block;
+    #checkbox {
+      width: auto;
+    }
+  }
+}
+
+#creditCard {
+  position: relative;
+  padding-right: 79px;
+  #cvv {
+    width: 100px;
+  }
+  #card-number-field {
+    margin-right: 20px;
+  }
+  #card-number-field, #expiration-date {
+    display: inline-block;
+  }
+}
+
+.first_form {
+  margin-top: 20px;
+}
+
+#shippingInfo {
+  #street_input, #city_input {
+    display: inline-block;
+    margin-right: 20px;
+  }
+  #apt_input, #cp_input {
+    display: inline-block;
+  }
+  #apt, #cpCity {
+    width: 100px;
+  }
+}
+
+#greyBack {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: #646464;
+  opacity: 0.7;
+}
+
+/* Modal "thank you" */
+#congrat {
+  position: absolute;
+  text-align: center;
+  top: 40%; left: 50%; /* à 50%/50% du parent référent */
+  transform: translate(-50%, -50%); /* décalage de 50% de sa propre taille */
+  background-color: #FFFFFF;
+  width: 35%;
+  border-radius: 5px;
+  padding-bottom: 30px;
+  h2 {
+    font-size: 3.5em;
+    color: $text;
+  }
+  p {
+    font-size: 1.5em;
+  }
+}
+
+
+/*****************************/
+/* SHOP 2 - PAYEMENT *********/
+/*****************************/
+.cartShop2 {
+  background-color: #EDEDED;
+}
+.container > div {
+  position: relative;
+}
+
+
+.car_shop2_margin {
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+
+  #payement_block {
+    margin-top: 10%;
+    .closed {
+      height: 0px;
+    }
+  }
+  #cart_recap {
+    height: 100%;
+    position: absolute;
+    right: 0px;
+  }
+}

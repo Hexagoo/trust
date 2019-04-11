@@ -1,0 +1,522 @@
+{# templates/home3.html.twig #}
+{% extends 'base_payement3.html.twig' %}
+  {% block body %}
+  <div class="no_display" id="greyBack"></div>
+  <div class="no_display wrapper" id="congrat">
+    <div id="text">
+      <h2>Thanks you!</h2>
+      <p>Your order is made.</br>You will receive a confirmation email.</p>
+    </div>
+    <div class="form-group">
+        <a href="{{ path('shop3') }}" class="btn3">Return to home</a>
+    </div>
+  </div>
+  <div id="main_container">
+    <div id="car_shop3_margin">
+      <div id="concent3">
+        <div id="cart_recap3">
+            <p class="title_section">Shopping cart</p>
+            {% if articlesInCart is defined %}
+              {% for article in articlesInCart %}
+                <div class="product_cart" id="{{ article.id }}">
+                  <div class="product_img">
+                    <img class="pic" src="/vendor/images/{{article.shortName}}.png">
+                  </div>
+                  <div class="product_content">
+                      <span class="title">{{ article.title }}</span>
+                      <span class="price">${{ article.price }}</span>
+                  </div>
+                </div>
+              {% endfor %}
+                <hr>
+                <div id="total_price">
+                  <div id="block_buy">
+                    <span id="total">Total: <span id="total_cart">${{ totalCart }}</span></span>
+                  </div>
+                </div>
+            {% endif %}
+        </div>
+        <div id="payement_block">
+          <!-- John the monster -->
+          <svg class="monsterHide" version="1.1" id="johnMonster" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="220" height="220" x="0px" y="0px"
+          	 viewBox="0 0 598.2 599.4" style="enable-background:new 0 0 598.2 599.4;" xml:space="preserve">
+            <style type="text/css">
+            	.st0{fill:#415E75;}
+            	.st1{fill:#6290A9;}
+            	.st2{fill:#72A6C9;}
+            	.st3{fill:#FFFFFF;stroke:#415E75;stroke-width:11.132;stroke-miterlimit:10;}
+            	.st4{fill:url(#SVGID_1_);}
+            	.st5{fill:url(#SVGID_2_);}
+            	.st6{fill:url(#SVGID_3_);}
+            	.st7{fill:#7FBDE0;}
+            	.st8{fill:#FFFFFF;stroke:#415E75;stroke-width:11.791;stroke-miterlimit:10;}
+            	.st9{fill:none;stroke:#415E75;stroke-width:9.0041;stroke-miterlimit:10;}
+            </style>
+            <path class="st0" d="M408.4,145.6l-17.4,11c-3,1.9-7,1-8.9-2L304.3,31c-1.9-3-1-7,2-8.9l17.4-11c3-1.9,7-1,8.9,2l77.8,123.5
+            	C412.3,139.7,411.4,143.7,408.4,145.6z"/>
+            <path class="st1" d="M449.6,148.4l-17.4,11c-3,1.9-7,1-8.9-2L345.5,33.8c-1.9-3-1-7,2-8.9l17.4-11c3-1.9,7-1,8.9,2l77.8,123.5
+            	C453.6,142.5,452.6,146.5,449.6,148.4z"/>
+            <path class="st1" d="M393,184.1l-17.4,11c-3,1.9-7,1-8.9-2L288.9,69.6c-1.9-3-1-7,2-8.9l17.4-11c3-1.9,7-1,8.9,2L395,175.2
+            	C396.9,178.2,396,182.2,393,184.1z"/>
+            <path class="st2" d="M486.3,143.8l-17.4,11c-3,1.9-7,1-8.9-2L382.2,29.2c-1.9-3-1-7,2-8.9l17.4-11c3-1.9,7-1,8.9,2l77.8,123.5
+            	C490.2,137.9,489.3,141.9,486.3,143.8z"/>
+            <path class="st2" d="M372.7,214.7l-17.4,11c-3,1.9-7,1-8.9-2l-77.8-123.5c-1.9-3-1-7,2-8.9l17.4-11c3-1.9,7-1,8.9,2l77.8,123.5
+            	C376.6,208.8,375.7,212.8,372.7,214.7z"/>
+            <path class="st3" d="M715.2,352.3l-254.1,160c-41,25.8-96,8.9-117.7-36.2l-79-164.6c-36.6-76.2-12-166.5,57.4-210.2l87.6-55.1
+            	c70.9-44.7,165.3-26,217.5,43.1l108.2,143.2C764.5,271.6,755.4,327,715.2,352.3z"/>
+            <g>
+
+            		<radialGradient id="SVGID_1_" cx="351.0728" cy="1003.1954" r="123.6196" gradientTransform="matrix(0.8501 -0.5267 0.1869 0.3016 60.2023 250.8435)" gradientUnits="userSpaceOnUse">
+            		<stop  offset="0" style="stop-color:#80BDE0"/>
+            		<stop  offset="1" style="stop-color:#415E75"/>
+            	</radialGradient>
+            	<path class="st4" d="M621.4,282.9c9,14.3-24.9,51.8-75.7,83.8s-99.3,46.3-108.3,32c-5.8-9.3,6.3-28.2,29.4-49.2
+            		c8.3-7.5,17.9-15.2,28.6-22.8c5.6-4,11.5-8,17.7-11.8c6.2-3.9,12.3-7.5,18.3-10.8c11.5-6.4,22.6-11.7,33-16
+            		C593.2,276.4,615.6,273.6,621.4,282.9z"/>
+            	<g>
+
+            			<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="311.0374" y1="650.973" x2="311.0374" y2="609.3577" gradientTransform="matrix(0.8462 -0.5329 0.5329 0.8462 -113.7826 -22.9139)">
+            			<stop  offset="0" style="stop-color:#FFFFFF"/>
+            			<stop  offset="1" style="stop-color:#415E75"/>
+            		</linearGradient>
+            		<path class="st5" d="M495.5,326.8c12.2,19.6,15.2,39.6,6.7,44.9c-7.9,5-23.2-4.8-35.3-22.1C475.1,342.1,484.7,334.4,495.5,326.8z"
+            			/>
+
+            			<linearGradient id="SVGID_3_" gradientUnits="userSpaceOnUse" x1="389.98" y1="650.973" x2="389.98" y2="609.3593" gradientTransform="matrix(0.8462 -0.5329 0.5329 0.8462 -113.7826 -22.9139)">
+            			<stop  offset="0" style="stop-color:#FFFFFF"/>
+            			<stop  offset="1" style="stop-color:#415E75"/>
+            		</linearGradient>
+            		<path class="st6" d="M564.4,288.1c10.4,18.4,12.6,36.4,4.7,41.4c-8.4,5.3-25.2-6.1-37.6-25.5C543,297.7,554.1,292.4,564.4,288.1z"
+            			/>
+            	</g>
+            </g>
+            <g>
+            	<g>
+            		<circle class="st0" cx="392.6" cy="265.9" r="49.8"/>
+            		<circle class="st7" cx="384.6" cy="245.3" r="18.5"/>
+            		<circle class="st7" cx="416.7" cy="261.6" r="9.6"/>
+            	</g>
+            	<g>
+            		<circle class="st0" cx="521" cy="187.3" r="49.8"/>
+            		<circle class="st7" cx="513" cy="166.7" r="18.5"/>
+            		<circle class="st7" cx="545.1" cy="183" r="9.6"/>
+            	</g>
+            	<g>
+            		<path class="st0" d="M339,215.7c16.6-16.6,33.4-22,33.8-29.1c1.4-6.5-22.4-13.1-47.3,7.6c-12,10-19.1,24.6-21.3,36.2
+            			c-2.4,11.8,0.1,20.7,3.2,22.2C314,255.6,321.8,231.7,339,215.7z"/>
+            		<path class="st0" d="M339,215.7c16.6-16.6,33.4-22,33.8-29.1c1.4-6.5-22.4-13.1-47.3,7.6c-12,10-19.1,24.6-21.3,36.2
+            			c-2.4,11.8,0.1,20.7,3.2,22.2C314,255.6,321.8,231.7,339,215.7z"/>
+            	</g>
+            	<g>
+            		<path class="st0" d="M501.5,115.7c-22.2,7.8-34.2,20.6-40.9,17.9c-6.5-1.5-2.2-25.9,27.3-39.4c14.2-6.5,30.4-6.6,41.9-3.6
+            			c11.7,2.9,18.6,9,18.7,12.5C548.3,110.4,523.4,107,501.5,115.7z"/>
+            		<path class="st0" d="M501.5,115.7c-22.2,7.8-34.2,20.6-40.9,17.9c-6.5-1.5-2.2-25.9,27.3-39.4c14.2-6.5,30.4-6.6,41.9-3.6
+            			c11.7,2.9,18.6,9,18.7,12.5C548.3,110.4,523.4,107,501.5,115.7z"/>
+            	</g>
+            </g>
+            <g>
+            	<path class="st8" d="M377,464.9c51.1,60.9,106.1,83.9,105.5,108.2c2.8,22.2-79.4,37.6-157.1-39.4c-37.5-37.4-57.1-88.3-61.1-128.4
+            		c-4.6-40.4,6.4-69.8,17.2-73.8C304.5,322.8,323.6,405.9,377,464.9z"/>
+            	<path class="st9" d="M377,464.9c51.1,60.9,106.1,83.9,105.5,108.2c2.8,22.2-79.4,37.6-157.1-39.4c-37.5-37.4-57.1-88.3-61.1-128.4
+            		c-4.6-40.4,6.4-69.8,17.2-73.8C304.5,322.8,323.6,405.9,377,464.9z"/>
+            </g>
+          </svg>
+          <div id="payement_section">
+            <span class="btn_section3 fontWeight" id="btn_cb3">PAYMENT</span>
+            <span class="btn_section3" id="btn_shipping3">SHIPPING INFO</span>
+            <span class="btn_section3" id="btn_confirmInfo3">CONFIRMATION</span>
+          </div>
+          <hr>
+          <!-- creditCard -->
+          <div class="card-wrapper disapear"></div>
+          <div id="cb3" class="form_shop3">
+            <form id="creditCard">
+              <span class="section">Payement
+                <div class="form-group first_form" id="credit_cards">
+                  <img src="/vendor/images/visa.png" id="visa">
+                  <img src="/vendor/images/master.png" id="mastercard">
+                  <img src="/vendor/images/amex.png" id="amex">
+                </div>
+              </span>
+              <div class="form-group owner first_form">
+                  <label for="owner">Owner</label>
+                  <input placeholder="Full name" type="text" class="form-control" id="owner" name="name">
+              </div>
+              <div class="form-group" id="card-number-field">
+                  <label for="cardNumber">Card Number</label>
+                  <input placeholder="•••• •••• •••• ••••" type="tel" class="form-control" name="number" id="cardNumber">
+              </div>
+              <div id="content_input">
+                <div class="form-group" id="expiration-date">
+                    <label>Expiration Date</label>
+                    <input placeholder="MM/YY" type="tel" class="form-control" id="date" name="expiry">
+                </div>
+                <div class="form-group" id="cvv-field">
+                    <label for="cvv">CVV</label>
+                    <input placeholder="•••" type="number" name="cvc" class="form-control" id="cvv">
+                </div>
+              </div>
+              <div class="form-group" id="pay-now">
+                  <a href="#" id="confirm-card2" class="btn3">Confirm</a>
+              </div>
+            </form>
+          </div>
+          <!-- shippingInfo -->
+          <div id="shipping3" class="form_shop3 disapear">
+            <form id="shippingInfo">
+              <span class="section">Shipping information</span>
+              <div class="form-group">
+                  <label for="owner">Name*</label>
+                  <input type="text" class="form-control" id="name">
+              </div>
+              <div class="form-group street" id="street_input">
+                  <label for="street">Street, road*</label>
+                  <input type="text" class="form-control" id="street">
+              </div>
+              <div class="form-group apt" id="apt_input">
+                  <label for="apt">Apt.</label>
+                  <input type="text" class="form-control" id="apt">
+              </div>
+              <div class="form-group">
+                  <label for="country">Country*</label>
+                  <select id="Country">
+                      <option value="xx">Choose your country</option>
+                      <option value="01">Japan</option>
+                      <option value="02">Taiwan </option>
+                      <option value="03">France</option>
+                      <option value="04">United Kingdon</option>
+                      <option value="05">United State of America</option>
+                      <option value="06">Jamaica</option>
+                      <option value="07">China</option>
+                      <option value="08">South Korea</option>
+                      <option value="09">Australia</option>
+                      <option value="10">Spain</option>
+                      <option value="11">Germany</option>
+                      <option value="12">Singapore</option>
+                  </select>
+              </div>
+              <div class="form-group" id="city_input">
+                  <label for="city">City*</label>
+                  <input type="text" class="form-control" id="city">
+              </div>
+              <div class="form-group" id="cp_input">
+                  <label for="cardPostal">Code postal*</label>
+                  <input type="text" class="form-control" id="cpCity">
+              </div>
+              <div class="form-group" id="shipping">
+                  <a href="#" id="confirm-shipping2" class="btn3">Confirm</a>
+              </div>
+            </form>
+          </div>
+          <!-- confirmInfo -->
+          <div id="confirmInfo3" class="form_shop3 disapear">
+            <form id="confirmInfo" class="first_form">
+              <span class="section">Confirmation payement</span>
+              <!-- <a class="modify_btn" href="#" class="hide">Modify</a> -->
+              </br>
+              <span id="checkbox_stuff">
+                <input id="checkbox" type="checkbox" name="agree">
+                I agree to stuff*
+              </span>
+              <div class="form-group" id="shipping">
+                  <a href="#" id="confirm-command2" class="btn3">Confirm</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <a class="link_action" href="{{ path('shop3') }}">Cancel payement</a>
+  </div>
+  {% endblock %}
+  {% block javascripts %}
+  {{ parent() }}
+  <script>
+    $(document).ready(function(){
+      new Card({
+            form: document.querySelector('form'),
+            container: '.card-wrapper'
+        });
+
+      var owner = $("#owner"),
+          cardNumber = $('#cardNumber'),
+          cardNumberField = $('#card-number-field'),
+          confirm_card = $('#confirm-card2'),
+          CVV = $("#cvv"),
+          dateExpire = $('#date'),
+          name = $("#name"),
+          street = $("#street"),
+          country = $("#country"),
+          city = $("#city"),
+          cpCity = $("#cpCity"),
+          shippingInfo = $("#confirm-shipping2"),
+          confirmInfo = $("#confirm-command2");
+
+      var ownerBoolean = false;
+      var numCbBoolean = false;
+      var dateBoolean = false;
+      var cvvBoolean = false;
+      var nameBoolean = false;
+      var sreetBoolean = false;
+      var cityBoolean = false;
+      var cpCityBoolean = false;
+
+      owner.keyup(function() {
+        var res = owner.val().split(" ");
+        if (res.length == 2) {
+          ownerBoolean = true;
+          $("#owner").addClass("greeInput");
+          $("#iconOwner").addClass("moove");
+          $("#owner").removeClass("redInput");
+        } else {
+          ownerBoolean = false;
+          $("#iconOwner").removeClass("moove");
+          $("#owner").addClass("redInput");
+        }
+      });
+      cardNumber.keyup(function() {
+        if ((cardNumber.val()).length == 19) {
+          numCbBoolean = true;
+          $("#cardNumber").removeClass("redInput");
+          $("#cardNumber").addClass("greeInput");
+          $("#iconCb").addClass("moove");
+        } else {
+          numCbBoolean = false;
+          $("#cardNumber").addClass("redInput");
+          $("#iconCb").removeClass("moove");
+        }
+      });
+      dateExpire.keyup(function() {
+        if ((dateExpire.val()).length == 7) {
+          dateBoolean = true;
+          $("#date").removeClass("redInput");
+          $("#iconDate").addClass("moove");
+          $("#date").addClass("greeInput");
+        } else {
+          dateBoolean = false;
+          $("#iconDate").removeClass("moove");
+          $("#date").addClass("redInput");
+        }
+      });
+      CVV.keyup(function() {
+        if ((CVV.val()).length == 3) {
+          cvvBoolean = true;
+          $("#cvv").removeClass("redInput");
+          $("#iconCvv").addClass("moove");
+          $("#cvv").addClass("greeInput");
+        } else {
+          cvvBoolean = false;
+          $("#iconCvv").removeClass("moove");
+          $("#cvv").addClass("redInput");
+        }
+      });
+      name.keyup(function() {
+        var res = name.val().split(" ");
+        if (res.length == 2) {
+          nameBoolean = true;
+          $("#name").removeClass("redInput");
+          $("#iconOwner").addClass("moove");
+          $("#name").addClass("greeInput");
+        } else {
+          nameBoolean = false;
+          $("#iconOwner").removeClass("moove");
+          $("#name").addClass("redInput");
+        }
+      });
+      street.keyup(function() {
+        var res = street.val().split(" ");
+        if (res.length > 2) {
+          sreetBoolean = true;
+          $("#street").removeClass("redInput");
+          $("#iconStreet").addClass("moove");
+          $("#street").addClass("greeInput");
+        } else {
+          sreetBoolean = false;
+          $("#iconStreet").removeClass("moove");
+          $("#street").addClass("redInput");
+        }
+      });
+      city.keyup(function() {
+        if ((city.val()).length > 3) {
+          cityBoolean = true;
+          $("#city").removeClass("redInput");
+          $("#iconCity").addClass("moove");
+          $("#city").addClass("greeInput");
+        } else {
+          cityBoolean = false;
+          $("#iconCity").removeClass("moove");
+          $("#city").addClass("redInput");
+        }
+      });
+      cpCity.keyup(function() {
+        if ((cpCity.val()).length > 3) {
+          cpCityBoolean = true;
+          $("#cpCity").removeClass("redInput");
+          $("#iconCpCity").addClass("moove");
+          $("#cpCity").addClass("greeInput");
+        } else {
+          cpCityBoolean = false;
+          $("#iconCpCity").removeClass("moove");
+          $("#cpCity").addClass("redInput");
+        }
+      });
+
+
+      $("#confirm-card2, #confirm-shipping2").mouseover(function(e) {
+        $("#johnMonster").removeClass("monsterHide");
+      });
+
+      $("#confirm-card2, #confirm-shipping2").mouseout(function(e) {
+        $("#johnMonster").addClass("monsterHide");
+      });
+
+      $("#btn_cb3").click(function(e) {
+          $("#cb3").removeClass('disapear');
+          $("#shipping3").addClass('disapear');
+          $("#confirmInfo3").addClass('disapear');
+          $('#modify_creditC').addClass('display');
+          $("#btn_cb3").addClass("fontWeight");
+          $("#btn_cb3").removeClass("fontWeight");
+          $("#btn_shipping3").removeClass("fontWeight");
+      });
+      //
+      $("#confirm-card2, #btn_shipping3").click(function(e) {
+        if(ownerBoolean == true) {
+          if(numCbBoolean == true) {
+            if(dateBoolean == true) {
+              if(cvvBoolean == true) {
+                  $("#shipping3").removeClass('disapear');
+                  $("#cb3").addClass('disapear');
+                  $('#modify_creditC').addClass('display');
+                  $("#btn_cb3").removeClass("fontWeight");
+                  $("#btn_shipping3").addClass("fontWeight");
+              } else {
+                  $("#cvv").addClass("redInput");
+              }
+            } else {
+                $("#date").addClass("redInput");
+            }
+          } else {
+              $("#cardNumber").addClass("redInput");
+          }
+        } else {
+            $("#owner").addClass("redInput");
+        }
+      });
+      //
+      $("#confirm-shipping2, #btn_confirmInfo3").click(function(e) {
+        if(nameBoolean == true) {
+          if(sreetBoolean == true) {
+            if(cityBoolean == true) {
+              if(cpCityBoolean == true) {
+                  $("#confirmInfo3").removeClass('disapear');
+                  $("#shipping3").addClass('disapear');
+                  $('#modify_shipping').addClass('display');
+                  $('#btn_confirmInfo3').addClass('fontWeight');
+                  $('#btn_shipping3').removeClass('fontWeight');
+              } else {
+                  $("#cpCity").addClass("redInput");
+              }
+            } else {
+                $("#city").addClass("redInput");
+            }
+          } else {
+              $("#street").addClass("redInput");
+          }
+        } else {
+            $("#name").addClass("redInput");
+        }
+      });
+      //
+      confirmInfo.click(function(e) {
+          // If checkbox checked
+          if( $('#checkbox').is(':checked') ) {
+            e.preventDefault();
+            var name = $('#owner').val();
+            var cvv = $('#cvv').val();
+            var cardNumber = $('#cardNumber').val();
+            var expireMonth = $('#month').val();
+            var expireYear = $('#year').val();
+            var city = $('#city').val();
+            var cpCity = $('#cpCity').val();
+            var cartFloat = parseFloat('{{totalCart}}');
+            $("#Oval-3").addClass('checked');
+
+            var cardNumberReal = cardNumber.split(" ");
+            var cardNumberReal2 = cardNumberReal[0]+cardNumberReal[1]+cardNumberReal[2]+cardNumberReal[3];
+
+            // Get id button clicked
+            $.ajax({
+              type: "POST",
+              url: "{{ path('shippingInfo2') }}",
+              data: { name: name, cvv: cvv, cardNumber: cardNumberReal2, city: city, cpCity: cpCity, cartFloat: cartFloat },
+              dataType: 'json',
+              async: true,
+              success: function(){
+                console.log(msg);
+              },
+              complete : function(status){
+                // If answer from controller is OK
+                if(status['status'] == 200) {
+                  $("#greyBack").removeClass('no_display');
+                  $("#congrat").removeClass('no_display');
+                  for (var i = 0; i < 250; i++) {
+                    create(i);
+                  }
+                }
+              }
+            });
+          // If confirm without checked box
+          } else {
+            console.log("NON");
+          }
+      });
+
+      // Function to create confetis
+      function create(i) {
+        var width = Math.random() * 8;
+        var height = width * 0.4;
+        var colourIdx = Math.ceil(Math.random() * 3);
+        var colour = "red";
+        switch(colourIdx) {
+          case 1:
+            colour = "yellow";
+            break;
+          case 2:
+            colour = "blue";
+            break;
+          default:
+            colour = "red";
+        }
+        $('<div class="confetti-'+i+' '+colour+'"></div>').css({
+          "width" : width+"px",
+          "height" : height+"px",
+          "top" : -Math.random()*20+"%",
+          "left" : Math.random()*100+"%",
+          "opacity" : Math.random()+0.5,
+          "transform" : "rotate("+Math.random()*360+"deg)"
+        }).appendTo('.wrapper');
+
+        drop(i);
+      }
+
+      function drop(x) {
+        $('.confetti-'+x).animate({
+          top: "100%",
+          left: "+="+Math.random()*15+"%"
+        }, Math.random()*3000 + 3000, function() {
+          reset(x);
+        });
+      }
+
+      function reset(x) {
+        $('.confetti-'+x).animate({
+          "top" : -Math.random()*20+"%",
+          "left" : "-="+Math.random()*15+"%"
+        }, 0, function() {
+          drop(x);
+        });
+      }
+    });
+  </script>
+  {% endblock %}

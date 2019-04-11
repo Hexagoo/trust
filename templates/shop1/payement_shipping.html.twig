@@ -1,0 +1,195 @@
+{# templates/home.html.twig #}
+{% extends 'base_payement.html.twig' %}
+  {% block body %}
+  <div class="container">
+      <div id="payement_block">
+        <!-- shippingInfo -->
+        <div class="container_form">
+          <form id="shippingInfo">
+            <span class="section_click">Shipping</span>
+            <hr>
+            <div class="form-group">
+                <label for="owner">Name<span class="redAsterik">*</span></label>
+                <input type="text" class="form-control" id="name" onkeypress="isInputCaracter(event)">
+                <i class="far fa-user"></i>
+            </div>
+            <div class="form-group street" id="street_input">
+                <label for="street">Street, road<span class="redAsterik">*</span></label>
+                <input type="text" class="form-control" id="street">
+                <i class="fas fa-road"></i>
+            </div>
+            <div class="form-group apt" id="apt_input">
+                <label for="apt">Apt.</label>
+                <input type="text" class="form-control" id="apt">
+                <i class="fas fa-list-ol"></i>
+            </div>
+            <div class="form-group">
+                <label for="country">Country<span class="redAsterik">*</span></label>
+                <select id="country">
+                    <option value="xx">Choose your country</option>
+                    <option value="01">Japan</option>
+                    <option value="02">Taiwan </option>``
+                    <option value="03">France</option>
+                    <option value="04">United Kingdon</option>
+                    <option value="05">United State of America</option>
+                    <option value="06">Jamaica</option>
+                    <option value="07">China</option>
+                    <option value="08">South Korea</option>
+                    <option value="09">Australia</option>
+                    <option value="10">Spain</option>
+                    <option value="11">Germany</option>
+                    <option value="12">Singapore</option>
+                    <option value="13">Mexico</option>
+                </select>
+            </div>
+            <div class="form-group" id="city_input">
+                <label for="city">City<span class="redAsterik">*</span></label>
+                <input type="text" class="form-control" id="city" onkeypress="isInputCaracter(event)">
+                <i class="fas fa-city"></i>
+            </div>
+            <div class="form-group" id="cp_input">
+                <label for="cardPostal">Code postal<span class="redAsterik">*</span></label>
+                <input type="text" class="form-control" id="cpCity" onkeypress="isInputNumber(event)">
+                <i class="fas fa-map-marker"></i>
+            </div>
+            <p><span class="redAsterik">*</span>This information are necessary if you don't want to send your parcel to your neighbour's house.</p>
+            <div id="confirmShipping1">
+              <span id="confirm-shipping" class="btn_checkout">Confirm</span>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div id="block_text_shop1">
+        <a class="link_action" href="{{ path('cartShop1') }}">Cancel payement</a>
+      </div>
+  </div>
+  {% endblock %}
+  {% block javascripts %}
+  {{ parent() }}
+  <script>
+    // Prevent caracters in CP input
+    function isInputNumber(evt){
+      var ch = String.fromCharCode(evt.which);
+
+      if(!(/[0-9]/.test(ch))){
+          evt.preventDefault();
+      }
+    }
+
+    // Prevent caracters in CP input
+    function isInputCaracter(evt){
+      var ch = String.fromCharCode(evt.which);
+      if(!(/[a-zA-Z\s]/.test(ch))){
+          evt.preventDefault();
+      }
+    }
+
+    $(document).ready(function(){
+
+      var confirmInfo = $("#confirm-shipping");
+      var name = $("#name");
+      var street = $("#street");
+      var country = $("#country");
+      var city = $("#city");
+      var cpCity = $("#cpCity");
+
+      var nameBoolean = false;
+      var sreetBoolean = false;
+      var countryBoolean = false;
+      var cityBoolean = false;
+      var cpCityBoolean = false;
+      var dataValide = false;
+
+
+      name.keyup(function() {
+        var res = name.val().split(" ");
+        if (res.length == 2) {
+          nameBoolean = true;
+          $("#name").removeClass("redInput");
+        } else {
+          nameBoolean = false;
+          $("#name").addClass("redInput");
+        }
+      });
+      street.keyup(function() {
+        var res = street.val().split(" ");
+        if (res.length > 2) {
+          sreetBoolean = true;
+          $("#street").removeClass("redInput");
+        } else {
+          sreetBoolean = false;
+          $("#street").addClass("redInput");
+        }
+      });
+      city.keyup(function() {
+        if ((city.val()).length > 3) {
+          cityBoolean = true;
+          $("#city").removeClass("redInput");
+        } else {
+          cityBoolean = false;
+          $("#city").addClass("redInput");
+        }
+      });
+      cpCity.keyup(function() {
+        if ((cpCity.val()).length > 3) {
+          cpCityBoolean = true;
+          $("#cpCity").removeClass("redInput");
+        } else {
+          cpCityBoolean = false;
+          $("#cpCity").addClass("redInput");
+        }
+      });
+
+      confirmInfo.click(function(e) {
+        if(nameBoolean == true) {
+          if(sreetBoolean == true) {
+            if($("#country").val() !== "xx") {
+              if(cityBoolean == true) {
+                  if(cpCityBoolean == true) {
+                    confirmInfo.removeClass('btnClose');
+                    dataValide = true;
+                  } else {
+                    $("#cpCity").addClass("redInput");
+                  }
+              } else {
+                  $("#city").addClass("redInput");
+              }
+            } else {
+
+            }
+          } else {
+              $("#street").addClass("redInput");
+          }
+        } else {
+            $("#name").addClass("redInput");
+        }
+      });
+
+      confirmInfo.click(function(e) {
+        if( dataValide == true ) {
+          e.preventDefault();
+          var city = $('#city').val();
+          var cpCity = $('#cpCity').val();
+          var idPayement = {{ idPayement }};
+
+          $.ajax({
+            type: "POST",
+            url: "{{ path('saveShippingInfo1') }}",
+            data: { city: city, cpCity: cpCity, idPayement: idPayement },
+            dataType: 'json',
+            async: true,
+            success: function(){
+              console.log("Send");
+            },
+            complete: function(data) {
+              var idPayement = data['responseText'];
+              var url = '{{ path('displayConfirmationView1', {'idPayement': 'idPayement'}) }}';
+              url = url.replace("idPayement", data['responseText']);
+              window.location.replace(url);
+              }
+            });
+          }
+        });
+      });
+  </script>
+  {% endblock %}

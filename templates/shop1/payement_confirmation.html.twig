@@ -1,0 +1,70 @@
+{# templates/home.html.twig #}
+{% extends 'base_payement.html.twig' %}
+  {% block body %}
+  <div class="container">
+      <div id="payement_block">
+      <!-- confirmInfo -->
+        <div class="container_form">
+          <form id="confirmInfo" class="first_form">
+            <span class="section_click">Confirmation payement, <span>because we're never sure of anything</span></span>
+            <hr>
+            <!-- <a class="modify_btn" href="#" class="hide">Modify</a> -->
+            <!-- <p id="totalCart">$</p> -->
+            </br>
+            <span id="checkbox_stuff">
+              <input id="checkbox_add" class="checkbox" type="checkbox" name="agree">
+              I want to receive adds about new product available.
+            </span>
+            <span id="checkbox_stuff">
+              <input id="checkbox" class="checkbox" type="checkbox" name="agree">
+              <span class="redAsterik">*</span>I agree to stuff
+            </span>
+          </form>
+        </div>
+        <div id="confirmShipping1">
+          <span id="confirm-command" class="btn_checkout">Confirm</span>
+        </div>
+        <a class="link_action" href="{{ path('cartShop1') }}">Cancel payement</a>
+      </div>
+  </div>
+  {% endblock %}
+  {% block javascripts %}
+  {{ parent() }}
+  <script>
+    $(document).ready(function(){
+
+      var confirmInfo = $("#confirm-command");
+
+      confirmInfo.click(function(e) {
+          // If checkbox checked
+          if( $('#checkbox').is(':checked') ) {
+            e.preventDefault();
+            $("#Oval-3").addClass('checked');
+            var idPayement = {{ idPayement }};
+
+            // Get id button clicked
+            $.ajax({
+              type: "POST",
+              url: "{{ path('confirmationPaiement1') }}",
+              data: { idPayement: idPayement },
+              dataType: 'json',
+              async: true,
+              success: function(){
+                console.log(msg);
+              },
+              complete : function(status) {
+                // If answer from controller is OK
+                if(status['status'] == 200) {
+                  $("#greyBack").removeClass('no_display');
+                  $("#congrat").removeClass('no_display');
+                }
+              }
+            });
+          // If confirm without checked box
+          } else {
+            console.log("NON");
+          }
+      });
+    });
+  </script>
+  {% endblock %}

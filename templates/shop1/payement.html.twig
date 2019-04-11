@@ -1,0 +1,157 @@
+{# templates/home.html.twig #}
+{% extends 'base_payement.html.twig' %}
+  {% block body %}
+  <div class="container">
+      <div id="payement_block">
+          <!-- creditCard -->
+          <div class="demo-container">
+            <div class="card-wrapper"></div>
+
+            <div class="container_form form-container active">
+              <form id="creditCard">
+                <span class="section_click">Payement</span>
+                <hr>
+                <div class="form-group owner">
+                    <label for="owner">Owner</label>
+                    <input placeholder="Full name" type="text" name="name" class="form-control" id="owner">
+                    <i class="far fa-user"></i>
+                </div>
+                <div class="form-group" id="card-number-field">
+                    <label for="cardNumber">Card Number</label>
+                    <input placeholder="•••• •••• •••• ••••" type="tel" name="number" type="text" class="form-control" id="cardNumber">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <div class="form-group" id="expiration-date">
+                    <label>Expiration Date</label>
+                    <input placeholder="MM/YY" type="tel" name="expiry" id="expireDate">
+                    <i class="far fa-calendar"></i>
+                </div>
+                <div class="form-group" id="cvv-field">
+                    <label for="cvv">CVV</label>
+                    <input placeholder="•••" type="number" name="cvc" class="form-control" id="cvv">
+                    <i class="fas fa-lock"></i>
+                </div>
+                <div class="form-group" id="pay-now">
+                    <a href="#" id="confirm-card" class="btn_checkout">Confirm</a>
+                </div>
+              </form>
+            </div>
+        </div>
+        <div id="block_text_shop1">
+          <a class="link_action" href="{{ path('cartShop1') }}">Cancel payement</a>
+        </div>
+      </div>
+  </div>
+  {% endblock %}
+  {% block javascripts %}
+  {{ parent() }}
+  <script>
+    $(document).ready(function(){
+      new Card({
+          form: document.querySelector('form'),
+          container: '.card-wrapper'
+      });
+
+      var owner = $("#owner"),
+          cardNumber = $('#cardNumber'),
+          cardNumberField = $('#card-number-field'),
+          CVV = $("#cvv"),
+          expireDate = $('#expireDate'),
+          confirmInfo = $("#confirm-card");
+
+      var ownerBoolean = false;
+      var numCbBoolean = false;
+      var dateBoolean = false;
+      var cvvBoolean = false;
+
+      owner.keyup(function() {
+        var res = owner.val().split(" ");
+        if (res.length == 2) {
+          ownerBoolean = true;
+          $("#owner").removeClass("redInput");
+        } else {
+          ownerBoolean = false;
+          $("#owner").addClass("redInput");
+        }
+      });
+      cardNumber.keyup(function() {
+        if ((cardNumber.val()).length == 19) {
+          numCbBoolean = true;
+          $("#cardNumber").removeClass("redInput");
+        } else {
+          numCbBoolean = false;
+          $("#cardNumber").addClass("redInput");
+        }
+      });
+      expireDate.keyup(function() {
+        if ((expireDate.val()).length == 7) {
+          dateBoolean = true;
+          $("#date").removeClass("redInput");
+        } else {
+          dateBoolean = false;
+          $("#date").addClass("redInput");
+        }
+      });
+      CVV.keyup(function() {
+        if ((CVV.val()).length == 3) {
+          cvvBoolean = true;
+          $("#cvv").removeClass("redInput");
+        } else {
+          cvvBoolean = false;
+          $("#cvv").addClass("redInput");
+        }
+      });
+
+      confirmInfo.click(function(e) {
+        if(ownerBoolean == true) {
+          if(numCbBoolean == true) {
+            if(dateBoolean == true) {
+              if(cvvBoolean == true) {
+                $("#confirm-card").removeClass('btnClose');
+              } else {
+                  $("#cvv").addClass("redInput");
+              }
+            } else {
+                $("#date").addClass("redInput");
+            }
+          } else {
+              $("#cardNumber").addClass("redInput");
+          }
+        } else {
+            $("#owner").addClass("redInput");
+        }
+      });
+
+      confirmInfo.click(function(e) {
+          // If checkbox checked
+          e.preventDefault();
+          var name = $('#owner').val();
+          var cvv = $('#cvv').val();
+          var cardNumber = $('#cardNumber').val();
+          var expireDate = $('#expireDate').val();
+          var cardNumberReal = cardNumber.split(" ");
+          var cardNumberReal2 = cardNumberReal[0]+cardNumberReal[1]+cardNumberReal[2]+cardNumberReal[3];
+          var cartFloat = parseFloat('{{totalCart}}');
+          console.log(cartFloat);
+
+          $.ajax({
+            type: "POST",
+            url: "{{ path('saveCreditCardInfo1') }}",
+            data: { name: name, cvv: cvv, cardNumber: cardNumberReal2, cartFloat: cartFloat },
+            dataType: 'json',
+            async: true,
+            success: function(){
+              console.log("Send");
+            },
+            complete: function(data) {
+              var idPayement = data['responseText'];
+
+              var url = '{{ path('displayShippingForm1', {'idPayement': 'idPayement'}) }}';
+              url = url.replace("idPayement", data['responseText']);
+              window.location.replace(url);
+            }
+          });
+      });
+    });
+  </script>
+  {% endblock %}

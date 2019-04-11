@@ -1,0 +1,65 @@
+{% if articlesInCart is defined %}
+  <p id="cart_title">Your cart</p>
+  {% for article in articlesInCart %}
+    <div class="product_cart" id="{{ article.id }}">
+      <div class="product_img">
+        <img class="pic" src="/vendor/images/{{article.shortName}}.png">
+      </div>
+      <div class="product_content">
+          <span class="title">{{ article.title }}</span>
+          <span class="price">${{ article.price }}</span>
+      </div>
+      <div class="product_price">
+        <span class="add-to-cart removeItem" id="{{ article.id }}"><i class="far fa-trash-alt"></i></span>
+      </div>
+    </div>
+  {% endfor %}
+    <div id="johnContainer">
+      <img id="johnCart" src="/vendor/images/john1.png" alt="">
+    </div>
+    <hr>
+    <div id="total_price3">
+      <span id="total">Total:</span> <span id="total_cart">${{ totalCart }}</span>
+      <a id="btn_checkout2" href="{{ path('slidesInfo') }}">Checkout</a>
+    </div>
+{% else %}
+  <h3>Don't be shy, buy!</h3>
+{% endif %}
+<script>
+  $(document).ready(function(){
+    $("#btn_checkout2").mouseover(function() {
+       $('#johnCart').attr('src','/vendor/images/john2.png');
+       console.log("coucou");
+    });
+    $("#btn_checkout2").mouseout(function() {
+      $('#johnCart').attr('src','/vendor/images/john1.png');
+    });
+    // Remove article
+    $(".removeItem").click(function() {
+      // Get id button clicked
+      var idArticle = (this.id);
+      $.ajax({
+        type: "POST",
+        url: "{{ path('removeProduct1') }}",
+        data: { id: idArticle },
+        dataType: 'json',
+        async: true,
+        complete: function(msg){
+          $.ajax({
+            type: "POST",
+            url: "{{ path('cartShop3') }}",
+            dataType: 'json',
+            async: true,
+            success: function(msg){
+              console.log("Cart AJAX Sent");
+            },
+            complete: function(data){
+              $('#triangle-up').html(data['responseText']).show();
+            }
+        });
+        }
+      });
+    });
+   });
+
+  </script>
